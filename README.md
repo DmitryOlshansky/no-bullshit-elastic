@@ -23,11 +23,34 @@ Linux
 # this should print Python 3.5.x (or later, we don't use any advanced Python)
 python3 --version
 
-# this should show quite length log, keep it running and open in some window/tab
-# we will look in these logs for debugging later
+# this should print something but better at least Java 8
+java -version
+
+# I/m using Java 10/11 (preview?) version as in bleeding edge OpenJDK on Ubuntu:
+# ---------------------------------------
+# openjdk version "10.0.1" 2018-04-17
+# OpenJDK Runtime Environment (build 10.0.1+10-Ubuntu-3ubuntu1)
+# OpenJDK 64-Bit Server VM (build 10.0.1+10-Ubuntu-3ubuntu1, mixed mode)
+# ---------------------------------------
+# Stay on bleeding edge or die trying!
+
+
+# This should show quite chatty log (), 
+# Keep it running! Open new window or tab as needed but keep this one.
+#
+# We will look in these logs for debugging later if needed.
+# Quite probably, yes and more then once! ;)
+#
 path-to-unpacked-elastic/bin/elasticsearch
 
-# test local ElasticSearch or use dev box address instead
+# Alternative is to use sysyemd if you'd like to run it as a service
+# but at least 1-2G (the more the better up to ~16Gb) would be needed to run it. 
+# Debian package should install it like that. Then:
+
+systemctl start elasticsearch # it may use other service name, I did not try .deb package
+
+# In any case - test local ElasticSearch with curl or wget or httpie or Postman ...
+# (you can also use dev box hostname instead if failed to install locally)
 curl localhost:9200
 ```
 
@@ -39,7 +62,21 @@ MacOS has python3 out of the box (I think?) or in the worst case install well-kn
 The rest should be the same.
 
 
-The
+### First steps
 
+With routine shit out of the way let's start playing with it on some basic stuff,
+the kind you'll see on elastic.co en masse. 
+
+Some imaginery collections of music (MP3s?) and the like, of course, only meta-data is stored.
+A document in ElasticSearch is defined as JSON `document` or `object` but typically `document` even if it has 1 or 2 `fields`. See example for would-be MP3 track:
+
+```
+# First, I **cking want to see real meta-data on MP3s let's not brainwash people
+
+```
+
+*Typically - yeees, but you won't believe what kind of shit people dump in there as base64 or even worse eg as URL-encodede base64 of PNG, I kid you not.*
+
+Here and later dumb ass facts from real life, if you see *text like that*, use your brain! and keep these things (tales) in mind or for future reference.
 
 
