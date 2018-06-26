@@ -35,9 +35,8 @@ java -version
 # Stay on bleeding edge or die trying!
 
 
-
 # This should show quite chatty log that shows good info, really good debugging aid. 
-path-to-unpacked-elastic/bin/elasticsearch
+elasticsearch-6.3.0/bin/elasticsearch
 
 
 # Elasticsearch log will shows the following cool stuff and more:
@@ -72,15 +71,57 @@ pip install --user requests # to not pollute system's libs unless you have it al
 
 Pro Tip: for those on old laptops or in contrast on big iron: you can tune the size of heap and other JVM option in a file config/jvm.options (shocking, I know). In fact I suggest also to remove all -XX:CMSSomeCMSStuff and -XX:Pretouch. The latter is super important in producation but if you disable it you will get JVM to commit more memory as needed not upfront. Of course in production, you'd rather do everythin upfront and "pretouched", that is wired to RAM and in fact ElasticSearch will also try to _lock_ it in RAM if it has enough permissions.
 
-*I highly recommend everybody to _find a way_ to get ElasticSearch _permissions and ulimits_ to lock all of JVM Heap in RAM, you won't believe the kind of shit that may happens on a big machine with 128Gb of RAM that _still has swap space enabled_ and, of course, ElasticSearch that has 64Gb  is quite easily choosen to swap out to disk. Why the fuck no? WE only have 58Gb to spare - swap that sucker out. And before you ask - no, it wasn't funny, not a single bit of fun.* 
+*I highly recommend everybody to _find a way_ to get ElasticSearch _permissions and ulimits_ to lock all of JVM Heap in RAM, you won't believe the kind of shit that may happens on a big machine with 128Gb of RAM that _still has swap space enabled_ and, of course, ElasticSearch that has 64Gb  is quite easily choosen to swap out to disk. Why the fuck no? WE only have 58Gb to spare - swap that sucker out. And before you ask - no, it wasn't funny, not a single bit of fun.*
 
-Windows:
+Bonus points: I will actually do all of that stuff using GraalVM to run ElasticSearch instead of "canonical" HotSpot + OpenJDK build from Oracle (it's just that or pretyy close this days).
 
-```powershell
-# I'm sorry I had no Windows on any of machine I had at hand at the time of writing:)
-# Good luck! And by the way you can help me fill this out.
+For the brave (part 1):
+
+```bash
+# Linux-only and x86_64 like GraalVM itself (for now but might stay like that until 2019-2020)
+
+# First - kill all of CMS collector options and switches, GraalVM only sports G1 GC
+#
+# Here is a simple Unix command-line spell version of that:
+sed -i -r 's/-XX:.*CMS.*//g'
+
+# Secondly you may tweak options in config/jvm.options yourself
+# I highly recommend to comment-out this one: -XX:+AlwaysPreTouch
+# Since that would rezerve 1G (or more as you choosen) upfront and
+# it may not use it but you'd loose that RAM right off the gate.
+
+# Lastly start it with your copy of GraalVM:
+JAVA_HOME=~/graalvm-ce-1.0.0-rc2 bin/elasticsearch
+
 ```
 
-MacOS has python3 out of the box (I think?) or in the worst case install the well-known Homebrew and install Python3 via Homebrew. I won't show exact commands, because again no Mac in my possesion and too tired to do yet another virtual machine with some MacOS that works on VM. The rest should be the same as Linux though.
+If your even more brave, start multiple ElasticSearch servers on same host, they do auto-join,
+so you can also test what happens when say 1 out of 3 crashes.
+```bash
+# Nothing special, I just copy original directory to a new place with all permission intact
+cp -rp elasticsearch-6.3.0 elasticsearch-node-1
+# do the above as many times as you can/like ...
+# and then - clear data directory in each of them before(!) starting
+# data directory is is empty on fresh download but gets initialized on first start,
+# watch out for this(!) or waste time looking at funny logs, and even then they got better lately
+
+# command is untested but should work with or without minor tweaks
+# where N is a number of your copies named in the above notation of elasticsearch-node-[0-9]
+#
+for n in 1 2 ... N ; do elasticsearch-node-$n/bin/elasticsearch > node-$n.log 2>&1 & ; done
+# it should start a bunch of elasticsearch nodes each writing stdout logs to a separate file
+```
+
+And finally - I will likely even run 2 server one on GraalVM and one on stock Oracle Java 8.
+
+No hints here - you are not supposed to do this but I will not stop you should you like to ;)
+
+On Windows ... it's complicated.
+
+Only general guidelines 
+
+MacOS (sorta-kinda)
+
+MacOS has python3 out of the box (I think?) or in the worst case install the well-known Homebrew and install Python3 via Homebrew. I won't show exact commands, because again no Mac in my possesion and I'm too tired from my last attempts on that front to do yet another virtual machine with some MacOS that works on VM. The rest should be the same as Linux though.
 
 And with that setup stuff *mostly* covered let's go over to learn the minimum thoery, shall we?

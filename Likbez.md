@@ -28,7 +28,7 @@ Like in one TV show, I just want to say: "Yo, Beatch!" in customary "Pinkman" vo
 
 - Юзай сорцес, Люк! Я - твой отец!
 
-Пиздец, все добавить нечего - зановес!
+Пиздец, все, добавить нечего - зановес!
 
 ...
 
@@ -36,9 +36,7 @@ Like in one TV show, I just want to say: "Yo, Beatch!" in customary "Pinkman" vo
 
 ```
 
-Real facts, real data, real examples and and near-full improvisation in delivery. I want to do stuff that you (the audience) want with say ElasticSearch.
-
-P.S. Later I may try a "No bullshit" something else. But I want to *known* the stuff I talked about (surprise, surprise, I know). So it may happen in some other format as well but later.
+Real facts, real data, real examples and and near-full improvisation in delivery. I want to do stuff that you (the audience) want with say ElasticSearch but maybe beyond. Later I may try a "No bullshit" style with something else. There are two problems, first - I must know that new stuff *very well*. Second it *must be useful to at least 7+ more people* among us.
 
 ### Search is not only full-text 
 
