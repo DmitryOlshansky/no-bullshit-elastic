@@ -54,6 +54,14 @@ systemctl start elasticsearch # it may use other service name, I did not try .de
 curl localhost:9200
 ```
 
+For recent Ubuntu this "spell" should work well:
+
+```bash
+sudo apt install openjdk-8-jdk-headless python3 python3-pip python3-dev
+
+pip install --user requests # to not pollute system's libs unless you have it already
+```
+
 Windows
 ```powershell
 ```
@@ -62,21 +70,4 @@ MacOS has python3 out of the box (I think?) or in the worst case install well-kn
 The rest should be the same.
 
 
-### First steps
-
-With routine shit out of the way let's start playing with it on some basic stuff,
-the kind you'll see on elastic.co en masse. 
-
-Some imaginery collections of music (MP3s?) and the like, of course, only meta-data is stored.
-A document in ElasticSearch is defined as JSON `document` or `object` but typically `document` even if it has 1 or 2 `fields`. See example for would-be MP3 track:
-
-```
-# First, I **cking want to see real meta-data on MP3s let's not brainwash people
-
-```
-
-*Typically - yeees, but you won't believe what kind of shit people dump in there as base64 or even worse eg as URL-encodede base64 of PNG, I kid you not.*
-
-Here and later dumb ass facts from real life, if you see *text like that*, use your brain! and keep these things (tales) in mind or for future reference.
-
-
+Now if all is working, go over to Likbez and then start on chapters: ch1, ch2, ch3 and so on. All of them are (should be) linked together Markdown with text, examples and ideas to try at home or right at the workshop.

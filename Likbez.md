@@ -1,18 +1,44 @@
 ## No bullshit ElasticSearch
 
-Why no bullshit?
+### Why no bullshit? What do you mean - no bullshit?
 
-Because I'm tired to FUCK(!) of lectures that either assume you can't youself
-download stuff from internet and run it, then try 5 toy examples and feel good.
+Because I'm tired to fucking damned ungodly ugly queuer(!) fuck(!!) of lectures that either *assume you can't youself download stuff from internet* and *run it*, then *try 5 toy examples* and *feel good*.
 
-Or, for instance, as a second option - post tons of mostly relevant theoretical stuff,
-and once you are intimidated and confused sell you something: a service, a subscription,
-more lectures (and shitty, really "placebo" stuff at best), and finally sell you a product
-that you'll spend next few years getting rid off.
+Or, for instance, as a second option - *post tons of mostly relevant* theoretical *stuff*,
+and *once you are intimidated*, *tired* or *confused* *sell you something*: a service, a subscription, more lectures (and shitty, really "placebo" stuff at best), and finally *sell you a product* that you'll *spend next few years getting rid off*.
 
-So my approach - no bullshit, no shame and no useless crap.
+So my approach - no bullshit, no SMS or payment involed, no shame and no useless crap (for once!).
 
-Real facts, real data, real examples and and near-full improvisation in delivery. I want to do stuff that you (the audience) want with ElasticSearch (for now ES, later - anything good goes).
+Jokingly but still almost on spot, it looks like this:
+
+```
+[English]
+
+- Oh, it's simple to use may thetra-SQL-but-not-quite uber DB you just
+and take an example from: demos/for-the-deaf-dumb-blind/simple.go
+
+Aaaand thne the classic moment:
+
+- Use, the source, Luke!
+
+And then damned silence, not even a single sensible shit follows after that. Ever.
+Like in one TV show, I just want to say: "Yo, Beatch!" in customary "Pinkman" voice.
+
+[Russian, heavily altered but the same idea]
+
+- Юзай сорцес, Люк! Я - твой отец!
+
+Пиздец, все добавить нечего - зановес!
+
+...
+
+Народ безмолствует.
+
+```
+
+Real facts, real data, real examples and and near-full improvisation in delivery. I want to do stuff that you (the audience) want with say ElasticSearch.
+
+P.S. Later I may try a "No bullshit" something else. But I want to *known* the stuff I talked about (surprise, surprise, I know). So it may happen in some other format as well but later.
 
 ### Search is not only full-text 
 
