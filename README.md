@@ -35,13 +35,22 @@ java -version
 # Stay on bleeding edge or die trying!
 
 
-# This should show quite chatty log (), 
+
+# This should show quite chatty log that shows good info, really good debugging aid. 
+path-to-unpacked-elastic/bin/elasticsearch
+
+
+# Elasticsearch log will shows the following cool stuff and more:
+# state of cluster as it comes up, plugins, system settings 
+# and warnings that should be all adressed before going
+# to production, usually. 
+#
 # Keep it running! Open new window or tab as needed but keep this one.
 #
 # We will look in these logs for debugging later if needed.
 # Quite probably, yes and more then once! ;)
 #
-path-to-unpacked-elastic/bin/elasticsearch
+
 
 # Alternative is to use sysyemd if you'd like to run it as a service
 # but at least 1-2G (the more the better up to ~16Gb) would be needed to run it. 
@@ -58,16 +67,20 @@ For recent Ubuntu this "spell" should work well:
 
 ```bash
 sudo apt install openjdk-8-jdk-headless python3 python3-pip python3-dev
-
 pip install --user requests # to not pollute system's libs unless you have it already
 ```
 
-Windows
+Pro Tip: for those on old laptops or in contrast on big iron: you can tune the size of heap and other JVM option in a file config/jvm.options (shocking, I know). In fact I suggest also to remove all -XX:CMSSomeCMSStuff and -XX:Pretouch. The latter is super important in producation but if you disable it you will get JVM to commit more memory as needed not upfront. Of course in production, you'd rather do everythin upfront and "pretouched", that is wired to RAM and in fact ElasticSearch will also try to _lock_ it in RAM if it has enough permissions.
+
+*I highly recommend everybody to _find a way_ to get ElasticSearch _permissions and ulimits_ to lock all of JVM Heap in RAM, you won't believe the kind of shit that may happens on a big machine with 128Gb of RAM that _still has swap space enabled_ and, of course, ElasticSearch that has 64Gb  is quite easily choosen to swap out to disk. Why the fuck no? WE only have 58Gb to spare - swap that sucker out. And before you ask - no, it wasn't funny, not a single bit of fun.* 
+
+Windows:
+
 ```powershell
+# I'm sorry I had no Windows on any of machine I had at hand at the time of writing:)
+# Good luck! And by the way you can help me fill this out.
 ```
 
-MacOS has python3 out of the box (I think?) or in the worst case install well-known Homebrew and install Python3 via Homebrew.
-The rest should be the same.
+MacOS has python3 out of the box (I think?) or in the worst case install the well-known Homebrew and install Python3 via Homebrew. I won't show exact commands, because again no Mac in my possesion and too tired to do yet another virtual machine with some MacOS that works on VM. The rest should be the same as Linux though.
 
-
-Now if all is working, go over to Likbez and then start on chapters: ch1, ch2, ch3 and so on. All of them are (should be) linked together Markdown with text, examples and ideas to try at home or right at the workshop.
+And with that setup stuff *mostly* covered let's go over to learn the minimum thoery, shall we?

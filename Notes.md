@@ -4,6 +4,8 @@ Disclaimer - originally I wanted to do it because I decided to leave the company
 
 But water flows and world changes even faster and now I stay in Tinkoff, but different strategy and different team, even programming language is likely different. But it was a good idea and I followed up on it.
 
+To have more fun - I will try to introduce at least one fake fact about ElasticSearch and search in general in my *emphasisied text*. Whoever finds stuff that is *factually wrong* gets some present, I'm not sure yet which. Those who try to to convince that it's bad practice or some other brain-dead convention and good taste kind of horseshit will not get the present, I am sorry ;)
+
 1. I want to shame bad stuff and make at least half of you "experts" on full-text search. As if there is somthing special about it to begin with, really.
 
 2. More exploration, moar exploitation(!) and above of all it *must be fun*.
@@ -17,5 +19,4 @@ But water flows and world changes even faster and now I stay in Tinkoff, but dif
 6. Again to *deliver a god damn point* - *ElasticSearch is a server, and no(!) Java and transport client is not(!) really faster*. Yes, I know it's *binary*, but no - it is not any faster in practice and awkward bitch to deal with. Again - there is nothing of value in using only Java/JVM language with ElasticSearch. Even fucking shellscript with curl can use it very well.
 
 7. Make sure I say at least once, that *scripts in ElasticSearch are good but it's like transactions* - *you don't need them, untill you actually do*.
-
 
