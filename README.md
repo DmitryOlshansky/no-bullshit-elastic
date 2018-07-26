@@ -6,14 +6,12 @@ First if you are on Linux it's ideal as I'll use Ubuntu myself.
 Windows is "mostly" fine. MacOS can be as easy as Linux but it's your call I never used ElasticSearch there.
 
 Dependencies and quick checks. The full list of downloads  is:
-- [Python 3](https://www.python.org/downloads/) - download from [website]() if you are on Windows
+- [Python 3](https://www.python.org/downloads/) - download from website if you are on Windows
 - Java, use packages on Linux, homebrew on MacOS and install from Oracle on Windows
-- [ElasticSearch](https://www.elastic.co/downloads/) use ZIP for Windows, tar.gz for Linux/MacOS. Use any version you'd in 6.x line.
-- curl or other HTTP client, GUI, console browser-based ...,  anything goes that can send HTTP requests with JSON payload as GET or POST
-- sane editor as we don't need IDE, notepad might work but something better is preferable.
+- [ElasticSearch](https://www.elastic.co/downloads/) use ZIP for Windows, tar.gz for Linux/MacOS. Use any version you'd like in 6.x line.
+- curl or other HTTP client - GUI, console or browser extensions
+- code editor as we don't need IDE, notepad might work but something better is preferable.
 
-For web access if you can't install anything local, I'll use MVNO dev Kibana at this address:
-....
 
 ### Quick preflight checks
 
@@ -53,8 +51,7 @@ elasticsearch-6.3.0/bin/elasticsearch
 
 # Alternative is to use sysyemd if you'd like to run it as a service
 # but at least 1-2G (the more the better up to ~16Gb) would be needed to run it. 
-# Debian package should install it like that. Then:
-
+# .deb package should install it like that. Then:
 systemctl start elasticsearch # it may use other service name, I did not try .deb package
 
 # In any case - test local ElasticSearch with curl or wget or httpie or Postman ...
@@ -69,13 +66,15 @@ sudo apt install openjdk-8-jdk-headless python3 python3-pip python3-dev
 pip install --user requests # to not pollute system's libs unless you have it already
 ```
 
-Pro Tip: for those on old laptops or in contrast on big iron: you can tune the size of heap and other JVM option in a file config/jvm.options (shocking, I know). In fact I suggest also to remove all -XX:CMSSomeCMSStuff and -XX:Pretouch. The latter is super important in producation but if you disable it you will get JVM to commit more memory as needed not upfront. Of course in production, you'd rather do everythin upfront and "pretouched", that is wired to RAM and in fact ElasticSearch will also try to _lock_ it in RAM if it has enough permissions.
+### Advanced stuff to try
 
-*I highly recommend everybody to _find a way_ to get ElasticSearch _permissions and ulimits_ to lock all of JVM Heap in RAM, you won't believe the kind of shit that may happens on a big machine with 128Gb of RAM that _still has swap space enabled_ and, of course, ElasticSearch that has 64Gb  is quite easily choosen to swap out to disk. Why the fuck no? WE only have 58Gb to spare - swap that sucker out. And before you ask - no, it wasn't funny, not a single bit of fun.*
+ For those on old laptops or maybe on big iron: you can tune the size of heap and other JVM option in a file config/jvm.options (shocking, I know). In fact I suggest also to remove all -XX:CMSSomeCMSStuff and -XX:Pretouch. The latter is super important in producation but if you disable it you will get JVM to commit more memory as needed not upfront. Of course in production, you'd rather do everything upfront and "pretouched", that is wired to RAM and in fact ElasticSearch will also try to _lock_ it in RAM if it has enough permissions.
+
+*I highly recommend everybody to _find a way_ to get ElasticSearch _permissions and ulimits_ to lock all of JVM Heap in RAM, you won't believe the kind of shit that may happen on a big machine with 128Gb of RAM that _still has swap space enabled_ and, of course, ElasticSearch that has 64Gb  is quite easily choosen to swap out to disk. Why the fuck no? WE only have 58Gb to spare - swap that sucker out. And before you ask - no, it wasn't funny, not a single bit of fun.*
 
 Bonus points: I will actually do all of that stuff using GraalVM to run ElasticSearch instead of "canonical" HotSpot + OpenJDK build from Oracle (it's just that or pretyy close this days).
 
-For the brave (part 1):
+For the brave, running on GraalVM, Linux:
 
 ```bash
 # Linux-only and x86_64 like GraalVM itself (for now but might stay like that until 2019-2020)
@@ -95,8 +94,8 @@ JAVA_HOME=~/graalvm-ce-1.0.0-rc2 bin/elasticsearch
 
 ```
 
-If your even more brave, start multiple ElasticSearch servers on same host, they do auto-join,
-so you can also test what happens when say 1 out of 3 crashes.
+If you have RAM, then start multiple ElasticSearch servers on same host, they do auto-join, so you can also test what happens when say 1 out of 3 crashes. They will auto-pick ports 9201, 9202..
+
 ```bash
 # Nothing special, I just copy original directory to a new place with all permission intact
 cp -rp elasticsearch-6.3.0 elasticsearch-node-1
@@ -112,16 +111,4 @@ for n in 1 2 ... N ; do elasticsearch-node-$n/bin/elasticsearch > node-$n.log 2>
 # it should start a bunch of elasticsearch nodes each writing stdout logs to a separate file
 ```
 
-And finally - I will likely even run 2 server one on GraalVM and one on stock Oracle Java 8.
-
-No hints here - you are not supposed to do this but I will not stop you should you like to ;)
-
-On Windows ... it's complicated.
-
-Only general guidelines 
-
-MacOS (sorta-kinda)
-
-MacOS has python3 out of the box (I think?) or in the worst case install the well-known Homebrew and install Python3 via Homebrew. I won't show exact commands, because again no Mac in my possesion and I'm too tired from my last attempts on that front to do yet another virtual machine with some MacOS that works on VM. The rest should be the same as Linux though.
-
-And with that setup stuff *mostly* covered let's go over to learn the minimum thoery, shall we?
+And with that setup stuff is *mostly* covered let's go over to FAQ, learn the minimum thoery, and dive into practice!
