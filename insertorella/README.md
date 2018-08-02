@@ -48,7 +48,7 @@ score = ??? / ( 10000 / pass_mark_score * elapsed)
 | Name     | Author           | Score | Elapsed  | CPU rating | Language | OS version         | Elastic version | JVM for ES           | 
 |----------|------------------|-------|----------|------------|----------|--------------------|-----------------|----------------------|
 | baseline | Dmitry Olshansky | 1258  | 3:04.01  |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
-| baseline | Dmitry Olshansky | 1258  | 2:57.26  |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  GraalVM 1.0.0rc3    |
+
 
 
 
