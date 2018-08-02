@@ -25,26 +25,36 @@ Hint: you need at least 10Gb of total RAM to hit anywhere close to highscores.
 Anything in range 16+ Gb is considered fair, it will be interesting to see if you could cheat by using more RAM.
 Hint: pagecache is a thing on Linux and Windows, so once you have read all of these files, they stay in RAM...
 
-Since my CPU (i7-6700) is so close to 10000 Passmark points, I'll use it as unit.
+Since my CPU (i7-6700) is so close to 10000 Passmark points, I'll use it as our unit.
 
 Pro Tips:
  - take a look at who is using how much of CPU, your `uploader` should be at least 50:50 with elasticsearch to be fast, less is better
  - try using more or less memory both for your app and for elastic, more or less threads etc.
- - I/O is a problem with "big"
+ - I/O is more of a problem with "big" dataset still run at least a once before gonig for results to ensure page cache is hot
 
-Basically 10000 of passmark multi-threaded score is 1 point. So we compute speed as inverse if time + normalize by CPU score:
+We compute score as estimate of # of events per second normalized by CPU passmark score.
+My machine has 10010 score so I'm using it as a unit:
 
 ```python
-score = your_pass_mark_score / (elapsed * 10000.0)
+# for small logs
+score = 231500 / ( 10000 / pass_mark_score * elapsed)
+# for big logs
+score = ??? / ( 10000 / pass_mark_score * elapsed)
 ```
 
 ### Sprint (small logs)
 
-|--------------------------------------------------------------------------------------------------------------------------------------|
+
 | Name     | Author           | Score | Elapsed  | CPU rating | Language | OS version         | Elastic version | JVM for ES           | 
-|--------------------------------------------------------------------------------------------------------------------------------------|
-| baseline | Dmitry Olshansky | ???   | ???      |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  GraalVM CE 1.0.0rc4 |
-|--------------------------------------------------------------------------------------------------------------------------------------|
+|----------|------------------|-------|----------|------------|----------|--------------------|-----------------|----------------------|
+| baseline | Dmitry Olshansky | 1258  | 3:04.01  |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
+
 
 
 ### Marathon (big logs)
+
+
+| Name     | Author           | Score | Elapsed  | CPU rating | Language | OS version         | Elastic version | JVM for ES           | 
+|----------|------------------|-------|----------|------------|----------|--------------------|-----------------|----------------------|
+| baseline | Dmitry Olshansky | ???   | ???      |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
+

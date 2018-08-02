@@ -48,6 +48,8 @@ def process_log(src):
 files = sys.argv[1:]
 pool = Pool(len(files))
 pairs = pool.map(process_log, files)
-
+total = 0 
 for i, p in enumerate(pairs):
+    total += p[0]
     print("Done %d: %s/%s" % (i, p[0] - p[1], p[0]))
+print("Total docs: %d" % total)
