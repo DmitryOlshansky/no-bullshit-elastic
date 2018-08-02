@@ -14,7 +14,9 @@ Almst all attempts to do even slightly fuzzy search fail which scares the shit o
  My favorite "Cold lay" - finds "lay me down" -> some other track that is not even "prefix correct" for my query!
  On the other hand Yandex music would first finds some "Cold ..." band which is fine actually.
 
- ### Pocket (former "Read it later")
+ ### Pocket. Former "Read it later" as of _2018
 
- Does only stupid prefix search, it's called `strncmp` on `strlen` of your query, i.e. even in low-level C it's trivial.
- It's not event a search sadly but advertised as such.
+ Does only plain stupid prefix search. Not even substring!!!
+
+ It's called `strncmp` using `strlen` of smallest of 2 strings, i.e. even in low-level C it's trivial.
+ It's not even a search but sadly input box is advertised as such.
