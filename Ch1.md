@@ -77,6 +77,14 @@ GET http://localhost:9200/siebel
 
 GET http://localhost:9200/siebel-2
 
+
+```
+
+## Custom mappings
+
+Can be defined before insertion. Full example for VSCode's RESTer plugin:
+
+```
 ###
 
 PUT http://localhost:9200/siebel-3
@@ -98,31 +106,5 @@ Content-Type: application/json
             }
         }
     }
-}
-```
-
-## Custom mappings
-
-Can be defined before insertion:
-
-```json
-{
-  "siebel": {
-    "mappings": {
-      "log": {
-        "properties": {
-          "id": {
-            "type": "text"
-          },
-          "text": {
-            "type": "text"
-          },
-          "ts": {
-            "type": "text"
-          }
-        }
-      }
-    }
-  }
 }
 ```
