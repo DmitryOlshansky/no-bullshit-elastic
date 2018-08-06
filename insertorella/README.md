@@ -39,7 +39,7 @@ My machine has 10010 score so I'm using it as a unit:
 # for small logs
 score = 231500 / ( 10000 / pass_mark_score * elapsed)
 # for big logs
-score = ??? / ( 10000 / pass_mark_score * elapsed)
+score = 4632500 / ( 10000 / pass_mark_score * elapsed)
 ```
 
 ### Sprint (small logs)
@@ -47,8 +47,7 @@ score = ??? / ( 10000 / pass_mark_score * elapsed)
 
 | Name     | Author           | Score | Elapsed  | CPU rating | Language | OS version         | Elastic version | JVM for ES           | 
 |----------|------------------|-------|----------|------------|----------|--------------------|-----------------|----------------------|
-| baseline | Dmitry Olshansky | 1258  | 3:04.01  |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
-
+| baseline | Dmitry Olshansky | 1258  | 3:04  |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
 
 
 
@@ -57,5 +56,5 @@ score = ??? / ( 10000 / pass_mark_score * elapsed)
 
 | Name     | Author           | Score | Elapsed  | CPU rating | Language | OS version         | Elastic version | JVM for ES           | 
 |----------|------------------|-------|----------|------------|----------|--------------------|-----------------|----------------------|
-| baseline | Dmitry Olshansky | ???   | ???      |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
+| baseline | Dmitry Olshansky | 1256   | 1:01:26      |  10010     | Python3  | Ubuntu 4.15.0-29   | 6.3.2           |  Oracle 10.0.1       |
 
