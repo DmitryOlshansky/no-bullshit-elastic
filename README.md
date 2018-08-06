@@ -1,6 +1,6 @@
-## No bullshit ElasticSearch and ELK workshop
+# No bullshit ElasticSearch and ELK
 
-### Preparations
+## Preparations
 
 First if you are on Linux it's ideal as I'll use Ubuntu myself.
 Windows is "mostly" fine. MacOS can be as easy as Linux but it's your call I never used ElasticSearch there.
@@ -13,7 +13,7 @@ Dependencies and quick checks. The full list of downloads  is:
 - code editor as we don't need IDE, notepad might work but something better is preferable.
 
 
-### Quick preflight checks
+## Quick preflight checks
 
 Linux
 
@@ -66,7 +66,7 @@ sudo apt install openjdk-8-jdk-headless python3 python3-pip python3-dev
 pip install --user requests # to not pollute system's libs unless you have it already
 ```
 
-### Advanced stuff to try
+## Advanced stuff to try
 
  For those on old laptops or maybe on big iron: you can tune the size of heap and other JVM option in a file config/jvm.options (shocking, I know). In fact I suggest also to remove all -XX:CMSSomeCMSStuff and -XX:Pretouch. The latter is super important in producation but if you disable it you will get JVM to commit more memory as needed not upfront. Of course in production, you'd rather do everything upfront and "pretouched", that is wired to RAM and in fact ElasticSearch will also try to _lock_ it in RAM if it has enough permissions.
 
@@ -111,4 +111,4 @@ for n in 1 2 ... N ; do elasticsearch-node-$n/bin/elasticsearch > node-$n.log 2>
 # it should start a bunch of elasticsearch nodes each writing stdout logs to a separate file
 ```
 
-And with that setup stuff is *mostly* covered let's go over to FAQ, learn the minimum thoery, and dive into practice!
+And with that setup stuff is *mostly* covered let's go over to [FAQ](FAQ.md), learn the minimum theory. And then (finally!) [dive into *no bullshit* practice](ch1.md)!
