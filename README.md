@@ -2,13 +2,13 @@
 
 ## Preparations
 
-First if you are on Linux it's ideal as I'll use Ubuntu myself.
-Windows is "mostly" fine. MacOS can be as easy as Linux but it's your call I never used ElasticSearch there.
+First if you are on Linux it's ideal as I use Ubuntu myself.
+Windows is "mostly" fine. MacOS can be as easy as Linux but it's your call, I never used ElasticSearch there.
 
 Dependencies and quick checks. The full list of downloads  is:
 - [Python 3](https://www.python.org/downloads/) - download from website if you are on Windows
-- Java, use packages on Linux, homebrew on MacOS and install from Oracle on Windows
-- [ElasticSearch](https://www.elastic.co/downloads/) use ZIP for Windows, tar.gz for Linux/MacOS. Use any version you'd like in 6.x line.
+- Java, use packages on Linux, [homebrew](https://brew.sh/) on MacOS and install from Oracle website on Windows
+- [ElasticSearch](https://www.elastic.co/downloads/) use ZIP for Windows, tar.gz for Linux/MacOS. Pick version you'd like in 6.x line.
 - curl or other HTTP client - GUI, console or browser extensions
 - code editor as we don't need IDE, notepad might work but something better is preferable.
 
@@ -33,25 +33,14 @@ java -version
 # Stay on bleeding edge or die trying!
 
 
-# This should show quite chatty log that shows good info, really good debugging aid. 
+# This should show quite chatty log that shows good info, really good debugging aid.
+# Keep it running! Open new window or tab as needed but keep this one open.
+# 
 elasticsearch-6.3.0/bin/elasticsearch
 
-
-# Elasticsearch log will shows the following cool stuff and more:
-# state of cluster as it comes up, plugins, system settings 
-# and warnings that should be all adressed before going
-# to production, usually. 
-#
-# Keep it running! Open new window or tab as needed but keep this one.
-#
-# We will look in these logs for debugging later if needed.
-# Quite probably, yes and more then once! ;)
-#
-
-
 # Alternative is to use sysyemd if you'd like to run it as a service
-# but at least 1-2G (the more the better up to ~16Gb) would be needed to run it. 
-# .deb package should install it like that. Then:
+# .deb package should install it like that. 
+# Use typical for systemd command:
 systemctl start elasticsearch # it may use other service name, I did not try .deb package
 
 # In any case - test local ElasticSearch with curl or wget or httpie or Postman ...

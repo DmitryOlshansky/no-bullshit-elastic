@@ -8,7 +8,9 @@ fi
 folder=$1
 
 for file in $folder/*.log ; do
-	awk -f parser.awk < $file &
+	# awk -f parser.awk < $file &
+	echo "running awk on $file"
+	awk -f parser.awk < $file
 done
 
 wait
